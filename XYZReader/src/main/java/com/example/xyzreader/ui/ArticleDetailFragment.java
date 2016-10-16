@@ -111,6 +111,7 @@ public class ArticleDetailFragment extends Fragment implements
         mCollapsingToolbar = (CollapsingToolbarLayout) mRootView.findViewById(R.id.article_detail_toolbar);
         mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
         mFabShare = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
+        mFabShare.setVisibility(View.GONE);
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +176,8 @@ public class ArticleDetailFragment extends Fragment implements
                                     public void onGenerated(Palette palette) {
                                         mMutedColor = palette.getDarkMutedColor(0xFF333333);
                                         mPhotoView.setImageBitmap(imageContainer.getBitmap());
+                                        mFabShare.setVisibility(View.VISIBLE);
+
                                         mRootView.findViewById(R.id.meta_bar)
                                                 .setBackgroundColor(mMutedColor);
                                         mCollapsingToolbar.setContentScrimColor(mMutedColor);
